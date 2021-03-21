@@ -9,7 +9,7 @@ import {
   Route,
 } from "react-router-dom";
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
-import Register from './Components/Register/Register';
+import Registers from './Components/Registers/Registers';
 import Home from './Components/Home/Home';
 import HumanityMore from './Components/HumanityMore/HumanityMore';
 
@@ -21,7 +21,7 @@ function App() {
 
   return (
     <UserContext.Provider value={[logInUser, setLogInUser]}>
-      <p>Name: {logInUser.name}</p>
+      {/* <p>Name: {logInUser.name}</p> */}
     <Router>
      <Switch>
        <Route path="/home">
@@ -30,11 +30,13 @@ function App() {
        <Route path="/login">
        <Login></Login>
        </Route>
-       <Route path="/task">
+
+       <PrivateRoute path="/task">
          <HumanityMore></HumanityMore>
-       </Route>
-       <PrivateRoute path="/register/:work">
-         <Register></Register>
+       </PrivateRoute>
+
+       <PrivateRoute path="/registers/:work">
+         <Registers></Registers>
        </PrivateRoute>
       
        <Route exact path="/">
